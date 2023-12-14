@@ -8,13 +8,13 @@ inputs:
 runs:
   using: 'composite'
   steps:
-#    - name: Cache dependencies
-#      id: cache
-#      uses: actions/cache@v3
-#      if: inputs.caching == 'true'
-#      with:
-#        path: node_modules
-#        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+    - name: Cache dependencies
+      id: cache
+      uses: actions/cache@v3
+      if: inputs.caching == 'true'
+      with:
+        path: node_modules
+        key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
       run: npm ci
